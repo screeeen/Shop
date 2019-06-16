@@ -7,6 +7,7 @@ import Item6 from './../././../images/stickerFaceOso.png'
 import Item7 from './../././../images/stickerFacePato.png'
 import Item8 from './../././../images/stickerFacePeixe.png'
 import Item9 from './../././../images/stickerFacePinguino.png'
+import { ADD_TO_CART} from '../actions/action-types/cart-actions'
 
 
 const initState = {
@@ -26,9 +27,35 @@ const initState = {
 }
 
 
-const cartReducer= (state = initState, action)=>{
-  console.log("cart",state.items);
+const cartReducer = (state = initState, action) => {
+
+  if (action.type === ADD_TO_CART) {
+    console.log("action: ",action.id);
+    let addedItem = state.items.find(item => item.id === action.id)
+    //check if the action id exists in the addedItems
+    let existed_item = state.addedItems.find(item => action.id === item.id)
+    if (existed_item) {
+      addedItem.quantity += 1
+      return {
+        ...state,
+        total: state.total + addedItem.price
+      }
+    }
+    else {
+      addedItem.quantity = 1;
+      //calculating the total
+      let newTotal = state.total + addedItem.price
+
+      return {
+        ...state,
+        addedItems: [...state.addedItems, addedItem],
+        total: newTotal
+      }
+    }
+  }
   return state
+
 }
+
 
 export default cartReducer

@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { addToCart } from '../components/actions/cartActions'
+import {connect} from 'react-redux';
+// import {Link} from 'react-router-dom';
 import ItemCard from './../components/ItemCard'
 
-class Home extends Component {
-
-//   handleClick = (id)=>{
-//     this.props.addToCart(id); 
-// }
+class Cart extends Component {
+ 
 
   generateList = () => {
-    let itemList = this.props.items;
+    let itemList = this.props.addedItems;
     return itemList.map ((oneItem, index) => {
       const { id, title, desc, price, img } = oneItem;
       return (
@@ -27,33 +24,25 @@ class Home extends Component {
     })
   }
 
-
-
   render() {
-    console.log("props: ", this.props);
-
     return (
-
       <div className="Container">
-        <h3>Home</h3>
+        <h3>My Cart</h3>
         {this.generateList()}
       </div>
     )
   }
 }
 
+
+
 const mapStateToProps = (state) => {
   console.log("st: ", state);
   return {
 
-    items: state.items
+    addedItems: state.addedItems
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addToCart: (id) => { dispatch(addToCart(id)) }
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps)(Cart)
