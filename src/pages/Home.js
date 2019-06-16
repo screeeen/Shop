@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { addToCart } from '../components/actions/cartActions'
 import ItemCard from './../components/ItemCard'
+import { Grid } from "@material-ui/core";
 
 class Home extends Component {
-
-//   handleClick = (id)=>{
-//     this.props.addToCart(id); 
-// }
 
   generateList = () => {
     let itemList = this.props.items;
@@ -27,16 +24,14 @@ class Home extends Component {
     })
   }
 
-
-
   render() {
     console.log("props: ", this.props);
-
     return (
-
-      <div className="Container">
+    <div style={{ marginTop: 20, padding: 30 }}>
         <h3>Home</h3>
+      <Grid container spacing={2} justify="center">
         {this.generateList()}
+      </Grid>
       </div>
     )
   }
@@ -45,7 +40,6 @@ class Home extends Component {
 const mapStateToProps = (state) => {
   console.log("st: ", state);
   return {
-
     items: state.items
   }
 }

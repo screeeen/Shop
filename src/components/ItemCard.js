@@ -9,9 +9,8 @@ import Button from "@material-ui/core/Button";
 
 function ItemCard(props) {
   return (
-    <div style={{ marginTop: 20, padding: 30 }}>
-      <Grid container spacing={2} justify="center">
-        <Grid item key={props.title}>
+
+        <Grid item xs={3} key={props.title}>
 
           <Card>
             <CardActionArea>
@@ -42,8 +41,7 @@ function ItemCard(props) {
             </CardActions>
           </Card>
         </Grid>
-      </Grid>
-    </div>
+
   )
 }
 
