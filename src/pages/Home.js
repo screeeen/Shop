@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { addToCart } from '../components/actions/cartActions'
+import { addQuantity } from '../components/actions/cartActions'
+import { substractQuantity } from '../components/actions/cartActions'
 import ItemCard from './../components/ItemCard'
 import { Grid } from "@material-ui/core";
 
@@ -10,6 +12,7 @@ class Home extends Component {
     let itemList = this.props.items;
     return itemList.map ((oneItem, index) => {
       const { id, title, desc, price, img } = oneItem;
+
       return (
         <ItemCard
           key={index}
@@ -19,6 +22,9 @@ class Home extends Component {
           img={img}
           id={id}
           addToCartFunc={this.props.addToCart}
+          removeFromCartFunc={this.props.removeItem}
+          addQuantityFunc={this.props.addQuantity}
+          substractQuantityFunc={this.props.substractQuantity}
         />
       )
     })
@@ -46,7 +52,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToCart: (id) => { dispatch(addToCart(id)) }
+    addToCart: (id) => { dispatch(addToCart(id)) },
+    addQuantity: (id)=>{dispatch(addQuantity(id))},
+    substractQuantity: (id)=>{dispatch(substractQuantity(id))}
   }
 }
 
