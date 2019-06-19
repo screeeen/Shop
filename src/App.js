@@ -3,13 +3,15 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
-import Checkout from './pages/Checkout';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
 
 class App extends Component  {
   render() {
     return (
       <>
           <BrowserRouter>
+          <CssBaseline/>
             <Navbar />
             <Switch>
               <Route exact path="/" component={Home} />

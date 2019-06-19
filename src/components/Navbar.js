@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar'
 import TypoGraphy from '@material-ui/core/Typography'
@@ -7,48 +8,50 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  link: {
+    margin: theme.spacing(1),
+    textDecoration: 'none'
+  },
+}));
+
+
 const Navbar = () => {
+  const classes = useStyles();
   return (
-    <AppBar color="secondary" position="static">
-      <Toolbar>
-        <TypoGraphy variant="h4" color="inherit">
-
-          <Link to="/" className="brand-logo">Shopping</Link>
-
-
+    <div className={classes.root}>
+      <AppBar color="default" position="static">
+        <Toolbar>
           <List component="nav">
             <ListItem component="div">
 
               <ListItemText inset>
                 <TypoGraphy color="inherit" variant="h4">
-                  <Link to="/">Shop</Link>
+                  <Link to="/"className={classes.link}>Shop</Link>
                 </TypoGraphy>
               </ListItemText>
 
               <ListItemText inset>
                 <TypoGraphy color="inherit" variant="h4">
-                <Link to="/cart">My Cart</Link>
+                  <Link to="/cart" className={classes.link}>Cart</Link>
                 </TypoGraphy>
               </ListItemText>
 
               <ListItemText inset>
                 <TypoGraphy color="inherit" variant="h4">
-                  <Link to="/cart"><i className="material-icons">shopping_cart</i></Link>
+                  <Link to="/cart"className={classes.link}>Checkout</Link>
                 </TypoGraphy>
               </ListItemText>
 
             </ListItem >
-
           </List>
-
-
-
-
-        </TypoGraphy>
-      </Toolbar>
-
-
-    </AppBar>
+        </Toolbar>
+      </AppBar>
+    </div>
   )
 }
 
