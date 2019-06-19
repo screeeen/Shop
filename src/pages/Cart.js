@@ -21,6 +21,7 @@ class Cart extends Component {
           img={img}
           id={id}
           addToCartFunc={this.props.addToCart}
+          disabledActions = {true}
         />
       )
     })

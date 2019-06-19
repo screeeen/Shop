@@ -8,15 +8,9 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import { createMuiTheme } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/purple';
+import {connect} from 'react-redux';
 
-const theme = createMuiTheme({
-  palette: {
-    primary: purple,
-    secondary: {
-      main: '#f44336',
-    },
-  },
-});
+
 
 
 class App extends Component {
@@ -26,7 +20,7 @@ class App extends Component {
         <BrowserRouter>
           <CssBaseline />
           <Box style={{backgroundColor: '#1E2759', color: 'white'}}>
-          <Navbar />
+          <Navbar addedItems={this.props.addedItems}/>
           <Container maxWidth="md">
             <Switch>
               <Route exact path="/" component={Home} />
@@ -41,8 +35,14 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  console.log("st: ", state);
+  return {
+
+    addedItems: state.addedItems
+  }
+}
 
 
 
-
-export default App;
+export default connect(mapStateToProps)(App);

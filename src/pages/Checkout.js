@@ -35,10 +35,7 @@ class Checkout extends Component<IFormProps, IFormState> {
     return (
       <>
         <Grid container spacing={2} justify="flex-start">
-
-
             <Card >
-
               <form onSubmit={(event) => { this.handleSubmit(event) }}>
                 <label>name</label>
                 <input

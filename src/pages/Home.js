@@ -6,6 +6,7 @@ import { substractQuantity } from '../components/actions/cartActions'
 import ItemCard from './../components/ItemCard'
 import { Grid } from "@material-ui/core";
 
+
 class Home extends Component {
 
   generateList = () => {

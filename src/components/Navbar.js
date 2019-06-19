@@ -10,6 +10,27 @@ import ListItemText from '@material-ui/core/ListItemText';
 import CardMedia from "@material-ui/core/CardMedia";
 import Pinguino from './../images/stickerFacePinguino.png';
 
+//Badge
+import IconButton from '@material-ui/core/IconButton';
+import Badge from '@material-ui/core/Badge';
+import { withStyles } from '@material-ui/core/styles';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+
+
+
+const StyledBadge = withStyles(theme => ({
+  badge: {
+    top: '50%',
+    right: -3,
+    // The border color match the background color.
+    border: `2px solid ${
+      theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[900]
+      }`,
+  },
+}))(Badge);
+
+
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -18,14 +39,16 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1),
     textDecoration: 'none'
   },
-  media:{
+  media: {
     width: 60,
-    height:60
-  }
+    height: 60
+  },
 }));
 
 
-const Navbar = () => {
+const Navbar = (props) => {
+  console.log("props app: ", props.addedItems.length);
+  const numberOfItems = props.addedItems.length;
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -34,16 +57,16 @@ const Navbar = () => {
           <List component="nav">
             <ListItem component="div">
 
-            <CardMedia
-            className={classes.media}
-            component="img"
-            alt="Contemplative Reptile"
-            image={Pinguino}
-          />
+              <CardMedia
+                className={classes.media}
+                component="img"
+                alt="Contemplative Reptile"
+                image={Pinguino}
+              />
 
               <ListItemText inset>
                 <TypoGraphy color="inherit" variant="h6">
-                  <Link to="/"className={classes.link}>Shop</Link>
+                  <Link to="/" className={classes.link}>Shop</Link>
                 </TypoGraphy>
               </ListItemText>
 
@@ -55,12 +78,21 @@ const Navbar = () => {
 
               <ListItemText inset>
                 <TypoGraphy color="inherit" variant="h6">
-                  <Link to="/cart"className={classes.link}>Checkout</Link>
+                  <Link to="/cart" className={classes.link}>Checkout</Link>
                 </TypoGraphy>
               </ListItemText>
 
+
+              <IconButton aria-label="Cart" className={classes.iconButton}>
+                <StyledBadge badgeContent={props.addedItems.length} color="primary">
+                  <ShoppingCartIcon />
+                </StyledBadge>
+              </IconButton>
+
             </ListItem >
           </List>
+
+
         </Toolbar>
       </AppBar>
     </div>

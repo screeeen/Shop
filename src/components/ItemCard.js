@@ -20,18 +20,33 @@ const useStyles = makeStyles(theme => ({
     display: "grid",
     gridTemplateRows: "1fr auto",
     gridGap: "8px",
-    height: 300,
+    height: 380,
     direction: "row",
     justify: "flex-start",
     alignItems: "flex-start",
   },
   media: {
     height: 140,
-  }
+  },
 }));
 
 function ItemCard(props) {
+  
   const classes = useStyles();
+  let actions;
+      if (props.disabledActions)  {
+        actions = null
+      } else {
+       actions = <CardActions>
+          <Button variant="outlined" size="small" color="primary" onClick={() => { props.addToCartFunc(props.id) }}>
+            Add to cart
+                </Button>
+
+          <Button variant="text" size="small" color="secondary">
+            Learn More
+                </Button>
+      </CardActions> }
+      
 
   return (
 
@@ -44,9 +59,6 @@ function ItemCard(props) {
             alt="Contemplative Reptile"
             image={props.img}
           />
-          <Fab size="small" color="secondary" aria-label="Add" className={classes.margin}>
-            <AddIcon />
-          </Fab>
 
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
@@ -55,16 +67,7 @@ function ItemCard(props) {
             <Typography variant="body2" gutterBottom>{props.desc}</Typography>
             <Typography component="p">Price: {props.price}</Typography>
           </CardContent>
-          
-        <CardActions>
-          <Button variant="contained" size="small" color="primary" onClick={() => { props.addToCartFunc(props.id) }}>
-            Add to cart
-                </Button>
-
-          <Button variant="contained" size="small" color="primary">
-            Learn More
-                </Button>
-        </CardActions>
+        {actions}
       </Card>
     </Grid>
 
