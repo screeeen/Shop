@@ -7,7 +7,8 @@ import TypoGraphy from '@material-ui/core/Typography'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-
+import CardMedia from "@material-ui/core/CardMedia";
+import Pinguino from './../images/stickerFacePinguino.png';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,6 +18,10 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1),
     textDecoration: 'none'
   },
+  media:{
+    width: 60,
+    height:60
+  }
 }));
 
 
@@ -29,20 +34,27 @@ const Navbar = () => {
           <List component="nav">
             <ListItem component="div">
 
+            <CardMedia
+            className={classes.media}
+            component="img"
+            alt="Contemplative Reptile"
+            image={Pinguino}
+          />
+
               <ListItemText inset>
-                <TypoGraphy color="inherit" variant="h4">
+                <TypoGraphy color="inherit" variant="h6">
                   <Link to="/"className={classes.link}>Shop</Link>
                 </TypoGraphy>
               </ListItemText>
 
               <ListItemText inset>
-                <TypoGraphy color="inherit" variant="h4">
+                <TypoGraphy color="inherit" variant="h6">
                   <Link to="/cart" className={classes.link}>Cart</Link>
                 </TypoGraphy>
               </ListItemText>
 
               <ListItemText inset>
-                <TypoGraphy color="inherit" variant="h4">
+                <TypoGraphy color="inherit" variant="h6">
                   <Link to="/cart"className={classes.link}>Checkout</Link>
                 </TypoGraphy>
               </ListItemText>
