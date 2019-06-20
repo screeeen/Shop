@@ -4,11 +4,10 @@ import ItemCard from './../components/ItemCard'
 import { Grid } from "@material-ui/core";
 import Recipe from './../components/Recipe.js'
 
-
 const styleThing = {
-  border: "1px solid white",
-  "border-radius":"4px",
-  height: "300px"
+  border: "1px solid blue",
+  "borderRadius": "4px",
+  height: "400px"
 }
 
 class Cart extends Component {
@@ -35,19 +34,17 @@ class Cart extends Component {
   render() {
     return (
       <>
-      <div style={{ marginTop: 20, padding: 30 }}>
-        <h3>My cart</h3>
-        <Grid container spacing={2} justify="flex-start" style={styleThing} >
-          {this.generateList()}
-        </Grid>
-      </div>
+        <div style={{ marginTop: 80, padding: 30 }}>
+          <h3>My cart</h3>
+          <Grid container spacing={2} justify="flex-start" style={styleThing} >
+            {this.generateList()}
+          </Grid>
+        </div>
         <Recipe />
-        </>
+      </>
     )
   }
 }
-
-
 
 const mapStateToProps = (state) => {
   console.log("st: ", state);
@@ -56,6 +53,5 @@ const mapStateToProps = (state) => {
     addedItems: state.addedItems
   }
 }
-
 
 export default connect(mapStateToProps)(Cart)

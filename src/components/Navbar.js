@@ -34,14 +34,15 @@ const StyledBadge = withStyles(theme => ({
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
+    height: 40,
   },
   link: {
     margin: theme.spacing(1),
     textDecoration: 'none'
   },
   media: {
-    width: 60,
-    height: 60
+    width: 50,
+    height: 50
   },
 }));
 
@@ -51,7 +52,7 @@ const Navbar = (props) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <AppBar color="default" position="static">
+      <AppBar color='default' position='fixed'>
         <Toolbar>
           <List component="nav">
             <ListItem component="div">

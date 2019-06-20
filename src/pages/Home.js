@@ -34,7 +34,7 @@ class Home extends Component {
   render() {
     console.log("props: ", this.props);
     return (
-    <div style={{ marginTop: 20, padding: 30 }}>
+    <div style={{ marginTop: 80, padding: 30 }}>
         <h3>Home</h3>
       <Grid container spacing={2} justify="center">
         {this.generateList()}

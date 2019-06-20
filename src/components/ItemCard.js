@@ -65,7 +65,7 @@ function ItemCard(props) {
               {props.title}
             </Typography>
             <Typography variant="body2">{props.desc}</Typography>
-            <Typography component="p">Price: {props.price}</Typography>
+            <b><Typography component="p">Price: {props.price}</Typography></b>
           </CardContent>
         {actions}
       </Card>

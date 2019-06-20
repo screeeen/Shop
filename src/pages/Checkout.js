@@ -2,6 +2,19 @@ import React, { Component } from 'react'
 import { CardElement, injectStripe, ReactStripeElements } from 'react-stripe-elements'
 import Card from "@material-ui/core/Card";
 import { Grid } from "@material-ui/core";
+import { withStyles } from '@material-ui/styles';
+import PropTypes from 'prop-types';
+
+
+const styles = theme => ({
+  card: {
+    display: "grid",
+    gridTemplateRows: "auto 1fr",
+    gridGap: "8px",
+    alignItems: "flex-start",
+  },
+});
+
 
 class Checkout extends Component<IFormProps, IFormState> {
   constructor(props: IFormProps) {
@@ -32,24 +45,21 @@ class Checkout extends Component<IFormProps, IFormState> {
 
 
   render() {
+    const { classes } = this.props;
     return (
       <>
-        <Grid container spacing={2} justify="flex-start">
-            <Card >
-              <form onSubmit={(event) => { this.handleSubmit(event) }}>
-                <label>name</label>
-                <input
-                  type="text"
-                  className=""
-                  value={this.state.name}
-                  onChange={(event) => this.handleChange(event)}
-                />
-                <label>CC Numbr -- Exp.Date</label>
-                <CardElement className="p-2 border border-dark" />
-                <button className="">Buy</button>
-              </form>
-            </Card>
-        </Grid>
+        <form className={classes.card} onSubmit={(event) => { this.handleSubmit(event) }}>
+          <input
+            placeholder="Cardholder's Name"
+            type="text"
+            className=""
+            value={this.state.name}
+            onChange={(event) => this.handleChange(event)}
+          />
+          <label>CC Numbr -- Exp.Date</label>
+          <CardElement className="p-2 border border-dark" />
+          <button className="">Buy</button>
+        </form>
       </>
     )
   }
@@ -62,5 +72,8 @@ interface IFormState {
   amount: "";
 }
 
+Checkout.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
-export default injectStripe(Checkout) 
+export default withStyles(styles)(injectStripe(Checkout)); 
