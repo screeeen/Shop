@@ -1,17 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
-import { Grid, Typography } from "@material-ui/core";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
 import { Elements } from 'react-stripe-elements'
 import Checkout from './../pages/Checkout';
+import Card from '@material-ui/core/Card';
 
-
+const styleThing = {
+  border: "1px solid white",
+  "border-radius":"4px",
+  width: "300px"
+}
 
 class Recipe extends Component {
 
@@ -32,21 +29,21 @@ class Recipe extends Component {
   render() {
     return (
       <>
-        <div className="collection">
-          <li className="collection-item">
+      <Card style={styleThing}>
+          <li >
             <label>
               <input type="checkbox" ref="shipping" onChange={this.handleChecked} />
               <span>Shipping(+6$)</span>
             </label>
           </li>
           <li className="collection-item"><b>Total: {this.props.total} $</b></li>
-        </div>
         <div className="checkout">
           <button className="waves-effect waves-light btn">Checkout</button>
         </div>
         <Elements>
           <Checkout/>
         </Elements>
+        </Card>
       </>
     )
   }

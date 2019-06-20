@@ -48,7 +48,6 @@ const useStyles = makeStyles(theme => ({
 
 const Navbar = (props) => {
   console.log("props app: ", props.addedItems.length);
-  const numberOfItems = props.addedItems.length;
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -73,12 +72,6 @@ const Navbar = (props) => {
               <ListItemText inset>
                 <TypoGraphy color="inherit" variant="h6">
                   <Link to="/cart" className={classes.link}>Cart</Link>
-                </TypoGraphy>
-              </ListItemText>
-
-              <ListItemText inset>
-                <TypoGraphy color="inherit" variant="h6">
-                  <Link to="/cart" className={classes.link}>Checkout</Link>
                 </TypoGraphy>
               </ListItemText>
 

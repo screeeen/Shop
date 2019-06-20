@@ -19,7 +19,7 @@ class App extends Component {
       <>
         <BrowserRouter>
           <CssBaseline />
-          <Box style={{backgroundColor: '#1E2759', color: 'white'}}>
+          <Box width="100vw" height="100vh" style={{backgroundColor: '#1E2759', color: 'white'}}>
           <Navbar addedItems={this.props.addedItems}/>
           <Container maxWidth="md">
             <Switch>

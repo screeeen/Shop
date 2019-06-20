@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import ItemCard from './../components/ItemCard'
 import { Grid } from "@material-ui/core";
 import Recipe from './../components/Recipe.js'
 
+
+const styleThing = {
+  border: "1px solid white",
+  "border-radius":"4px",
+  height: "300px"
+}
+
 class Cart extends Component {
- 
-  
 
   generateList = () => {
     let itemList = this.props.addedItems;
-    return itemList.map ((oneItem, index) => {
+    return itemList.map((oneItem, index) => {
       const { id, title, desc, price, img } = oneItem;
       return (
         <ItemCard
@@ -21,7 +26,7 @@ class Cart extends Component {
           img={img}
           id={id}
           addToCartFunc={this.props.addToCart}
-          disabledActions = {true}
+          disabledActions={true}
         />
       )
     })
@@ -29,13 +34,15 @@ class Cart extends Component {
 
   render() {
     return (
-    <div style={{ marginTop: 20, padding: 30 }}>
+      <>
+      <div style={{ marginTop: 20, padding: 30 }}>
         <h3>My cart</h3>
-      <Grid container spacing={2} justify="flex-start">
-        {this.generateList()}
-      </Grid>
-      <Recipe/>
+        <Grid container spacing={2} justify="flex-start" style={styleThing} >
+          {this.generateList()}
+        </Grid>
       </div>
+        <Recipe />
+        </>
     )
   }
 }

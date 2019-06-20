@@ -9,6 +9,8 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import { makeStyles } from '@material-ui/core/styles';
 
+
+
 const useStyles = makeStyles(theme => ({
   margin: {
     margin: theme.spacing(1),
@@ -18,11 +20,9 @@ const useStyles = makeStyles(theme => ({
   },
   card: {
     display: "grid",
-    gridTemplateRows: "1fr auto",
+    gridTemplateRows: "auto 1fr",
     gridGap: "8px",
     height: 380,
-    direction: "row",
-    justify: "flex-start",
     alignItems: "flex-start",
   },
   media: {
@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function ItemCard(props) {
-  
+
   const classes = useStyles();
   let actions;
       if (props.disabledActions)  {
@@ -60,11 +60,11 @@ function ItemCard(props) {
             image={props.img}
           />
 
-          <CardContent>
+          <CardContent  className={classes.content}>
             <Typography gutterBottom variant="h5" component="h2">
               {props.title}
             </Typography>
-            <Typography variant="body2" gutterBottom>{props.desc}</Typography>
+            <Typography variant="body2">{props.desc}</Typography>
             <Typography component="p">Price: {props.price}</Typography>
           </CardContent>
         {actions}
